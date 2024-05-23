@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Stage, Layer, Text } from 'react-konva';
 import URLImage from './URLImage';
 
