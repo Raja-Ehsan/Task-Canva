@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Image as KonvaImage } from 'react-konva';
 
-const URLImage = ({ image, setImages, imageclick }) => {
+const URLImage = ({ image, setImages, imageclick,mouseEnter,mouseLeave }) => {
   const [img, setImg] = useState(null);
   const imageRef = useRef(null);
 
@@ -25,6 +25,9 @@ const URLImage = ({ image, setImages, imageclick }) => {
 
   return (
     <KonvaImage
+    
+    onMouseEnter={mouseEnter}
+    onMouseLeave={mouseLeave}
       ref={image.ref}
       draggable
       x={image.x}

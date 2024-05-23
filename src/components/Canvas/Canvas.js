@@ -30,6 +30,16 @@ const Canvas = ({ texts, images, setTexts, setImages, selectedId, setSelectedId 
     }
   };
 
+  const changeCursorPointer = (e) => {
+    const container = e.target.getStage().container();
+    container.style.cursor = 'pointer';
+  };
+
+  const changeCursorDefault = (e) => {
+    const container = e.target.getStage().container();
+    container.style.cursor = 'default';
+  };
+
   return (
     <div className="canvas-container">
       <Stage width={600} height={650} style={{ backgroundColor: 'white' }} ref={stageRef} onClick={handleStageClick}>
@@ -43,6 +53,8 @@ const Canvas = ({ texts, images, setTexts, setImages, selectedId, setSelectedId 
               y={text.y}
               fontSize={text.fontSize}
               draggable
+              onMouseEnter={changeCursorPointer}
+              onMouseLeave={changeCursorDefault}
               onClick={() => handleTextClick(text.id)}
               onDblClick={() => handleTextDoubleClick(text.id)}
               onDragEnd={(e) => {
@@ -56,7 +68,9 @@ const Canvas = ({ texts, images, setTexts, setImages, selectedId, setSelectedId 
             />
           ))}
           {images.map((image) => (
-            <URLImage key={image.id} image={image} setImages={setImages} imageclick={handleImageClick} />
+            <URLImage key={image.id} image={image} setImages={setImages} imageclick={handleImageClick} 
+            mouseEnter={changeCursorPointer}
+            mouseLeave={changeCursorDefault} />
           ))}
         </Layer>
       </Stage>
